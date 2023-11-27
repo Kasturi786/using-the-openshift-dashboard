@@ -4,8 +4,8 @@ WORKDIR application
 COPY . .
 RUN mvn package
 #COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar target\backend-service-0.0.1-SNAPSHOT.jar list
-RUN java -Djarmode=layertools -jar target\backend-service-0.0.1-SNAPSHOT.jar extract
+RUN java -Djarmode=layertools -jar target/backend-service-0.0.1-SNAPSHOT.jar list
+RUN java -Djarmode=layertools -jar target/backend-service-0.0.1-SNAPSHOT.jar extract
 
 FROM adoptopenjdk:11-jre-hotspot
 WORKDIR application
