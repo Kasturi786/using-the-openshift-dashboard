@@ -1,7 +1,6 @@
-FROM adoptopenjdk:11-jre-hotspot AS builder
+FROM maven:3.8.4-openjdk-11-slim AS builder
 WORKDIR application
 ARG JAR_FILE= target\backend-service-0.0.1-SNAPSHOT.jar
-RUN apt-get install maven -y
 COPY . .
 RUN mvn package
 COPY ${JAR_FILE} application.jar
