@@ -1,10 +1,11 @@
 FROM maven:3.8.4-openjdk-11-slim AS builder
 WORKDIR application
-ARG JAR_FILE= target\backend-service-0.0.1-SNAPSHOT.jar
+#ARG JAR_FILE= target\backend-service-0.0.1-SNAPSHOT.jar
 COPY . .
 RUN mvn package
 #COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar ${JAR_FILE} extract
+RUN java -Djarmode=layertools -jar target\backend-service-0.0.1-SNAPSHOT.jar list
+RUN java -Djarmode=layertools -jar target\backend-service-0.0.1-SNAPSHOT.jar extract
 
 FROM adoptopenjdk:11-jre-hotspot
 WORKDIR application
